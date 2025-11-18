@@ -105,3 +105,15 @@ jobs:
           channel-id: 'YOUR_CHANNEL_ID'
           slack-token: ${{ secrets.SLACK_TOKEN }}
           message: "⚠️ DevSecOps pipeline failed! Check the reports artifacts."
+
+      # 🔹 Generate final combined HTML report
+      - name: Generate final combined report
+        run: |
+          python generate_report.py
+
+      # 🔹 Upload final report
+      - name: Upload final combined report
+        uses: actions/upload-artifact@v4
+        with:
+          name: devsecops-final-report
+          path: devsecops-final-report.html

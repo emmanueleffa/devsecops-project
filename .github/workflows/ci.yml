@@ -97,3 +97,11 @@ jobs:
           name: trivy-docker-report
           path: trivy-docker.json
 
+      # 🔹 Slack notification (en cas d'échec)
+      - name: Notify Slack
+        if: failure()
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          channel-id: 'YOUR_CHANNEL_ID'
+          slack-token: ${{ secrets.SLACK_TOKEN }}
+          message: "⚠️ DevSecOps pipeline failed! Check the reports artifacts."

@@ -1,0 +1,14 @@
+rules:
+  - id: hardcoded-secret
+    patterns:
+      - pattern: "password = '$SECRET'"
+    message: "Secret codé en dur détecté"
+    severity: WARNING
+    languages: [python]
+
+  - id: print-debug
+    patterns:
+      - pattern: "print($X)"
+    message: "Debug print détecté"
+    severity: INFO
+    languages: [python]

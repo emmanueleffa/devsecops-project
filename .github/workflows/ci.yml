@@ -26,6 +26,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install semgrep pre-commit
+          pip install semgrep pre-commit json2html
 
       # 4️⃣ Run pre-commit hooks
       - name: Run pre-commit hooks
@@ -59,6 +60,12 @@ jobs:
         with:
           name: gitleaks-report
           path: gitleaks-report.json
+
+
+      # 10️⃣ Générer le rapport HTML
+      - name: Generate HTML report
+        run: python generate_report.py
+
 
 
       # 🔹 Install Trivy
